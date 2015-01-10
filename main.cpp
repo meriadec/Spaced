@@ -6,12 +6,14 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 11:07:29 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 12:51:23 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/10 15:01:57 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
+#include <unistd.h>
 #include "Game.class.hpp"
+#include "Unit.class.hpp"
 
 void resize (int sig)
 {
@@ -19,21 +21,36 @@ void resize (int sig)
   std::cout << "RESIZE" << std::endl;
 }
 
+void segv (int sig)
+{
+  (void) sig;
+  std::cout << "SEGFAULT BITCH, RESETTING..." << std::endl;
+  endwin();
+}
 
 int main(void)
 {
+  Unit u = Unit("ship");
+
+  u.getGeometry();
+  return 2;
   Game game;
 
   signal(SIGWINCH, resize);
+  signal(SIGSEGV, segv);
 
-  int i = 0;
-
+  int ch;
   while (1) {
-    wmove(game.getWin(), 0, i);
-    int ch = getch();
-    std::cout << ch << std::endl;
-    waddch(game.getWin(), 'X' | A_UNDERLINE);
+
+    wclear(game.getWin());
+
+    if ((ch = getch()) != ERR) {
+      waddch(game.getWin(), ch | A_UNDERLINE);
+      mvaddch(52, 52, 'A');
+    }
+
     wrefresh(game.getWin());
+    usleep(100);
   }
 
   return (0);
