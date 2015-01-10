@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 11:07:29 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 16:25:57 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/10 16:53:57 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ void segv (int sig)
 
 int main(void)
 {
-  Game game;
-  Unit u = Unit("boss1");
+  Player    player;
+  Game      game(player);
 
   signal(SIGWINCH, resize);
   signal(SIGSEGV, segv);
 
   wclear(game.getWin());
-  game.draw(u);
+  game.draw(player);
   wrefresh(game.getWin());
   while (1);
 

@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 11:55:30 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 15:51:36 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/10 16:55:00 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <string>
 # include <ncurses.h>
 # include "Unit.class.hpp"
+# include "Player.class.hpp"
+# include "List.class.hpp"
 
 # define MAX_HEIGHT 89
 # define MAX_WIDTH 364
@@ -25,7 +27,7 @@ class Game {
 
   public:
 
-    Game (void);
+    Game  (Player const & player);
     ~Game (void);
 
     WINDOW * getWin (void) const;
@@ -37,10 +39,13 @@ class Game {
 
   private:
 
+    Game (void);
     Game & operator= (Game const & ref);
     Game (Game const & ref);
 
     WINDOW *  _win;
+    List *    _enemies;
+    Player    _player;
 
 };
 

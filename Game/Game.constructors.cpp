@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 11:56:44 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 14:01:07 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/10 16:54:23 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 #include "Game.class.hpp"
 
 Game::Game (void)
+{
+}
+
+Game::Game (Player const & player) : _player(player)
 {
   if (!initscr()) {
     exit(1);

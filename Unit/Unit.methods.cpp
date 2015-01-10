@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 14:08:43 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 16:28:28 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/10 16:51:32 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void Unit::setGeometry (std::string const filename)
   int           i = 0;
   std::string   line;
   size_t        length;
-  std::ifstream file (filename.c_str());
+  std::ifstream file (("sprites/" + filename).c_str());
 
   this->_height = 0;
   this->_width = 0;
