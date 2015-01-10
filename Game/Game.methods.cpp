@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 12:11:09 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 19:12:00 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/10 19:56:58 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,13 @@ void Game::acquire (void)
   int ch;
 
   if ((ch = getch()) != ERR) {
-    std::cout << ": " << KEY_UP << " -- ch: " << ch << std::endl;
-    if (ch == KEY_UP) {
+    if (ch == 65) {
       this->_player.setYV(-1);
-    } else if (ch == KEY_DOWN) {
+    } else if (ch == 66) {
       this->_player.setYV(1);
-    } else if (ch == KEY_RIGHT) {
+    } else if (ch == 67) {
       this->_player.setXV(1);
-    } else if (ch == KEY_LEFT) {
+    } else if (ch == 68) {
       this->_player.setXV(-1);
     }
   }
@@ -48,11 +47,17 @@ void Game::acquire (void)
 void Game::update (double t, double dt)
 {
   (void)t;
-  if (this->_player.getXV() != 0) {
+
+  if (this->_player.getXV() == 1) {
     this->_player.move(this->_player.getX() + dt * this->_player.getVelocity(), this->_player.getY());
-  } else if (this->_player.getYV() != 0) {
+  } else if (this->_player.getYV() == 1) {
     this->_player.move(this->_player.getX(), this->_player.getY() + dt * this->_player.getVelocity());
+  } else if (this->_player.getXV() == -1) {
+    this->_player.move(this->_player.getX() - dt * this->_player.getVelocity(), this->_player.getY());
+  } else if (this->_player.getYV() == -1) {
+    this->_player.move(this->_player.getX(), this->_player.getY() - dt * this->_player.getVelocity());
   }
+
   this->_player.setXV(0);
   this->_player.setYV(0);
 }

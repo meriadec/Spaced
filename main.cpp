@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 11:07:29 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 19:11:55 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/10 19:46:07 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 void resize (int sig)
 {
   (void) sig;
-  std::cout << "RESIZE" << std::endl;
+  printw("No resize...");
 }
 
 void segv (int sig)
