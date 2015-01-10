@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 12:11:09 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 18:36:06 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/10 18:57:45 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void Game::acquire (void)
       this->_player.setYV(-1);
     } else if (ch == KEY_DOWN) {
       this->_player.setYV(1);
-    } else if (ch == 91) {
+    } else if (ch == KEY_RIGHT) {
       this->_player.setXV(1);
     } else if (ch == KEY_LEFT) {
       this->_player.setXV(-1);
@@ -48,22 +48,20 @@ void Game::acquire (void)
 void Game::update (double t, double dt)
 {
   (void)t;
-  (void)dt;
   if (this->_player.getXV()) {
     this->_player.move(this->_player.getX() + dt * this->_player.getVelocity(), this->_player.getY());
     //this->_player.setY(this->_player.getY() + dt * 1);
   } else {
   
   }
-  //std::cout << "updating with time " << t << " and delta time " << dt << std::endl;
 }
 
 void Game::render (void)
 {
-  //wclear(this->_win);
+  wclear(this->_win);
 
   this->draw(this->_player);
-  //std::cout << "rendering" << std::endl;
+
   wrefresh(this->_win);
 }
 
