@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 11:55:30 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 15:03:26 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/10 15:51:36 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <string>
 # include <ncurses.h>
+# include "Unit.class.hpp"
 
 # define MAX_HEIGHT 89
 # define MAX_WIDTH 364
@@ -32,6 +33,7 @@ class Game {
     void  loop    (void);
     void  update  (double t, double dt);
     void  render  (void);
+    void  draw    (Unit const & unit);
 
   private:
 

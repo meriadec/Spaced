@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 12:11:09 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 14:55:49 by mpillet          ###   ########.fr       */
+/*   Updated: 2015/01/10 16:25:27 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,20 @@ void Game::update (double t, double dt)
 void Game::render (void)
 {
   std::cout << "rendering" << std::endl;
+}
+
+void Game::draw (Unit const & unit)
+{
+  unsigned int i = 0;
+  unsigned int j;
+  char ** geo = unit.getGeometry();
+
+  while (i < unit.getHeight() && (i + unit.getY()) < MAX_HEIGHT) {
+    j = 0;
+    while (j < unit.getWidth() && (j + unit.getX()) < MAX_WIDTH) {
+      mvwaddch(this->_win, i, j, geo[i][j]);
+      ++j;
+    }
+    ++i;
+  }
 }
