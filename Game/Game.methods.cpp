@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 12:11:09 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 19:56:58 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/10 20:02:03 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,25 +64,37 @@ void Game::update (double t, double dt)
 
 void Game::render (void)
 {
-  wclear(this->_win);
-
   this->draw(this->_player);
-
   wrefresh(this->_win);
 }
 
-void Game::draw (Unit const & unit)
+void Game::draw (Unit & unit)
 {
-  unsigned int i = 0;
-  unsigned int j;
-  char ** geo = unit.getGeometry();
+  unsigned int  i     = 0;
+  unsigned int  j;
+  unsigned int  x     = int(unit.getX());
+  unsigned int  y     = int(unit.getY());
+  char **       geo   = unit.getGeometry();
 
   while (i < unit.getHeight() && (i + unit.getY()) < MAX_HEIGHT) {
     j = 0;
     while (j < unit.getWidth() && (j + unit.getX()) < MAX_WIDTH) {
-      mvwaddch(this->_win, int(i + unit.getY()), int(j + unit.getX()), geo[i][j]);
+      mvwaddch(this->_win, i + unit.getLastX(), j + unit.getLastY(), ' ');
       ++j;
     }
     ++i;
   }
+
+  i = 0;
+  while (i < unit.getHeight() && (i + unit.getY()) < MAX_HEIGHT) {
+    j = 0;
+    while (j < unit.getWidth() && (j + unit.getX()) < MAX_WIDTH) {
+      mvwaddch(this->_win, i + x, j + y, geo[i][j]);
+      ++j;
+    }
+    ++i;
+  }
+
+  unit.setLastX(x);
+  unit.setLastY(y);
 }

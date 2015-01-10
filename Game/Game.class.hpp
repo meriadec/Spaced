@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 11:55:30 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 17:21:54 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/10 19:58:24 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class Game {
     void  loop    (void);
     void  update  (double t, double dt);
     void  render  (void);
-    void  draw    (Unit const & unit);
+    void  draw    (Unit & unit);
     void  acquire (void);
 
   private:

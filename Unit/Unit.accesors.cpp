@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 14:02:48 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 18:36:59 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/10 19:50:02 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,16 @@ float Unit::getY (void) const
   return this->_y;
 }
 
+int Unit::getLastX (void) const
+{
+  return this->_lastX;
+}
+
+int Unit::getLastY (void) const
+{
+  return this->_lastY;
+}
+
 int Unit::getXV (void) const
 {
   return this->_xV;
@@ -60,5 +70,16 @@ void Unit::setXV (int xv)
 void Unit::setYV (int yv)
 {
   this->_yV = yv;
+}
+
+
+void Unit::setLastX (int x)
+{
+  this->_lastX = x;
+}
+
+void Unit::setLastY (int y)
+{
+  this->_lastY = y;
 }
 
