@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 11:55:30 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 14:56:30 by mpillet          ###   ########.fr       */
+/*   Updated: 2015/01/10 15:03:26 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <iostream>
 # include <string>
 # include <ncurses.h>
+
+# define MAX_HEIGHT 89
+# define MAX_WIDTH 364
 
 class Game {
 
