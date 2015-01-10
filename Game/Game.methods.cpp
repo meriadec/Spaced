@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 12:11:09 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 20:02:03 by mpillet          ###   ########.fr       */
+/*   Updated: 2015/01/10 20:20:57 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ void Game::acquire (void)
   int ch;
 
   if ((ch = getch()) != ERR) {
-    if (ch == 65) {
+    if (ch == KEY_UP) {
       this->_player.setYV(-1);
-    } else if (ch == 66) {
+    } else if (ch == KEY_DOWN) {
       this->_player.setYV(1);
-    } else if (ch == 67) {
+    } else if (ch == KEY_RIGHT) {
       this->_player.setXV(1);
-    } else if (ch == 68) {
+    } else if (ch == KEY_LEFT) {
       this->_player.setXV(-1);
     }
   }
@@ -48,13 +48,13 @@ void Game::update (double t, double dt)
 {
   (void)t;
 
-  if (this->_player.getXV() == 1) {
+  if (this->_player.getYV() == 1) {
     this->_player.move(this->_player.getX() + dt * this->_player.getVelocity(), this->_player.getY());
-  } else if (this->_player.getYV() == 1) {
+  } else if (this->_player.getXV() == 1) {
     this->_player.move(this->_player.getX(), this->_player.getY() + dt * this->_player.getVelocity());
-  } else if (this->_player.getXV() == -1) {
-    this->_player.move(this->_player.getX() - dt * this->_player.getVelocity(), this->_player.getY());
   } else if (this->_player.getYV() == -1) {
+    this->_player.move(this->_player.getX() - dt * this->_player.getVelocity(), this->_player.getY());
+  } else if (this->_player.getXV() == -1) {
     this->_player.move(this->_player.getX(), this->_player.getY() - dt * this->_player.getVelocity());
   }
 
@@ -76,9 +76,9 @@ void Game::draw (Unit & unit)
   unsigned int  y     = int(unit.getY());
   char **       geo   = unit.getGeometry();
 
-  while (i < unit.getHeight() && (i + unit.getY()) < MAX_HEIGHT) {
+  while (i < unit.getHeight() && (i + y) < MAX_HEIGHT) {
     j = 0;
-    while (j < unit.getWidth() && (j + unit.getX()) < MAX_WIDTH) {
+    while (j < unit.getWidth() && (j + x) < MAX_WIDTH) {
       mvwaddch(this->_win, i + unit.getLastX(), j + unit.getLastY(), ' ');
       ++j;
     }
@@ -86,9 +86,9 @@ void Game::draw (Unit & unit)
   }
 
   i = 0;
-  while (i < unit.getHeight() && (i + unit.getY()) < MAX_HEIGHT) {
+  while (i < unit.getHeight() && (i + y) < MAX_HEIGHT) {
     j = 0;
-    while (j < unit.getWidth() && (j + unit.getX()) < MAX_WIDTH) {
+    while (j < unit.getWidth() && (j + x) < MAX_WIDTH) {
       mvwaddch(this->_win, i + x, j + y, geo[i][j]);
       ++j;
     }
