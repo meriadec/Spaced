@@ -6,7 +6,7 @@
 #    By: mpillet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/05 10:14:39 by mpillet           #+#    #+#              #
-#    Updated: 2015/01/10 12:50:08 by bgronon          ###   ########.fr        #
+#    Updated: 2015/01/10 15:15:01 by mpillet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,15 +14,18 @@ NAME		= ft_retro
 CC			= g++
 FLAGS		= -Wall -Werror -Wextra -pedantic
 LIBS		= -L /usr/lib -lncurses
-INC			= -I Game
+INC			= -I Game -I List
 
 SRC			=	main.cpp \
 					Game/Game.accesors.cpp \
 					Game/Game.constructors.cpp \
 					Game/Game.methods.cpp \
+					List/List.accesors.cpp \
+					List/List.constructors.cpp \
+					List/List.methods.cpp \
 
 DIR_OBJ		= .obj
-DIR_LIST	= Game
+DIR_LIST	= Game List
 
 OBJ			= $(addprefix $(DIR_OBJ)/, $(SRC:.cpp=.o))
 
