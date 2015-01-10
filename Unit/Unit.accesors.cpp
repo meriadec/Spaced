@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 14:02:48 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 16:18:43 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/10 18:36:59 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,38 @@ unsigned int Unit::getHeight (void) const
   return this->_height;
 }
 
-unsigned int Unit::getY (void) const
+float Unit::getX (void) const
+{
+  return this->_x;
+}
+
+float Unit::getY (void) const
 {
   return this->_y;
 }
 
-unsigned int Unit::getX (void) const
+int Unit::getXV (void) const
 {
-  return this->_x;
+  return this->_xV;
 }
+
+int Unit::getYV (void) const
+{
+  return this->_yV;
+}
+
+unsigned int Unit::getVelocity (void) const
+{
+  return this->_vel;
+}
+
+void Unit::setXV (int xv)
+{
+  this->_xV = xv;
+}
+
+void Unit::setYV (int yv)
+{
+  this->_yV = yv;
+}
+

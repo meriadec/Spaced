@@ -12,8 +12,8 @@
 
 #include "Player.class.hpp"
 
-void Player::move (unsigned int const x, unsigned int const y)
+void Player::move (float const x, float const y)
 {
-  (void) x;
-  (void) y;
+  this->_x = x;
+  this->_y = y;
 }

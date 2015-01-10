@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 13:57:20 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 15:36:58 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/10 18:38:26 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ Unit::Unit (void)
 
 Unit::Unit (std::string const filename): _width(0), _height(0), _x(0), _y(0)
 {
+  this->_vel = 5;
   this->_geometry = new char*[MAX_HEIGHT];
   for (int i = 0; i < MAX_WIDTH; i++) {
     this->_geometry[i] = new char[MAX_WIDTH];

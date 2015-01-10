@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 11:07:29 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 16:53:57 by mpillet          ###   ########.fr       */
+/*   Updated: 2015/01/10 18:33:57 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,11 @@ int main(void)
   Player    player;
   Game      game(player);
 
+
   signal(SIGWINCH, resize);
   signal(SIGSEGV, segv);
 
-  wclear(game.getWin());
-  game.draw(player);
-  wrefresh(game.getWin());
-  while (1);
-
+  game.loop();
 
   /*
   int ch;

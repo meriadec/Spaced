@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 11:56:44 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 16:54:23 by mpillet          ###   ########.fr       */
+/*   Updated: 2015/01/10 18:33:28 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ Game::Game (Player const & player) : _player(player)
   nodelay(this->_win, true);
   keypad(this->_win, true);
   wmove(this->_win, 0, 0);
+  curs_set(0);
 }
 
 Game::Game (Game const & ref)

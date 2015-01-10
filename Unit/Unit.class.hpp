@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 13:56:13 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 16:46:37 by mpillet          ###   ########.fr       */
+/*   Updated: 2015/01/10 18:37:01 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,33 @@ class Unit {
 
     unsigned int     getWidth    (void) const;
     unsigned int     getHeight   (void) const;
-    unsigned int     getX        (void) const;
-    unsigned int     getY        (void) const;
+    float            getX        (void) const;
+    float            getY        (void) const;
+    int              getXV       (void) const;
+    int              getYV       (void) const;
     char **          getGeometry (void) const;
+    unsigned int     getVelocity (void) const;
+
+    void             setXV (int xv);
+    void             setYV (int yv);
 
     void            setGeometry (std::string const filename);
     bool            areCollisioned (Unit const & one, Unit const & two) const;
-    virtual void    move (unsigned int const x, unsigned int const y) = 0;
+    virtual void    move (float const x, float const y) = 0;
 
   private:
 
     Unit (void);
 
+  protected:
+
     unsigned int     _width;
     unsigned int     _height;
-    unsigned int     _x;
-    unsigned int     _y;
+    float            _x;
+    float            _y;
+    int              _xV;
+    int              _yV;
+    unsigned int     _vel;
     char **          _geometry;
 
 };
