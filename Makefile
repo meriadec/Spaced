@@ -6,7 +6,7 @@
 #    By: mpillet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/05 10:14:39 by mpillet           #+#    #+#              #
-#    Updated: 2015/01/10 12:13:10 by mpillet          ###   ########.fr        #
+#    Updated: 2015/01/10 12:50:08 by bgronon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LIBS		= -L /usr/lib -lncurses
 INC			= -I Game
 
 SRC			=	main.cpp \
-					Game/Game.accessors.cpp \
+					Game/Game.accesors.cpp \
 					Game/Game.constructors.cpp \
 					Game/Game.methods.cpp \
 
