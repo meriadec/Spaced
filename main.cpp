@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 11:07:29 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 15:01:57 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/10 15:21:38 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,6 @@ void segv (int sig)
 
 int main(void)
 {
-  Unit u = Unit("ship");
-
-  u.getGeometry();
-  return 2;
   Game game;
 
   signal(SIGWINCH, resize);

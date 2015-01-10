@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 13:56:13 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 14:53:49 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/10 15:24:08 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,12 @@ class Unit {
 
     unsigned int     getWidth    (void) const;
     unsigned int     getHeight   (void) const;
+    unsigned int     getX        (void) const;
+    unsigned int     getY        (void) const;
     char **          getGeometry (void) const;
 
-    void    setGeometry (std::string const filename);
+    void            setGeometry (std::string const filename);
+    virtual void    move (unsigned int const x, unsigned int const y) = 0;
 
   private:
 
@@ -39,6 +42,8 @@ class Unit {
 
     unsigned int     _width;
     unsigned int     _height;
+    unsigned int     _x;
+    unsigned int     _y;
     char **          _geometry;
 
 };
