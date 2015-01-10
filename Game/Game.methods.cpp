@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 12:11:09 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 20:20:57 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/10 20:31:56 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ void Game::draw (Unit & unit)
   unsigned int  y     = int(unit.getY());
   char **       geo   = unit.getGeometry();
 
-  while (i < unit.getHeight() && (i + y) < MAX_HEIGHT) {
+  while (i < unit.getHeight()) {
     j = 0;
-    while (j < unit.getWidth() && (j + x) < MAX_WIDTH) {
+    while (j < unit.getWidth()) {
       mvwaddch(this->_win, i + unit.getLastX(), j + unit.getLastY(), ' ');
       ++j;
     }
@@ -86,9 +86,9 @@ void Game::draw (Unit & unit)
   }
 
   i = 0;
-  while (i < unit.getHeight() && (i + y) < MAX_HEIGHT) {
+  while (i < unit.getHeight()) {
     j = 0;
-    while (j < unit.getWidth() && (j + x) < MAX_WIDTH) {
+    while (j < unit.getWidth()) {
       mvwaddch(this->_win, i + x, j + y, geo[i][j]);
       ++j;
     }
