@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 12:11:09 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 18:57:45 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/10 19:12:00 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void Game::acquire (void)
   int ch;
 
   if ((ch = getch()) != ERR) {
-    //std::cout << ": " << KEY_UP << " -- ch: " << ch << std::endl;
+    std::cout << ": " << KEY_UP << " -- ch: " << ch << std::endl;
     if (ch == KEY_UP) {
       this->_player.setYV(-1);
     } else if (ch == KEY_DOWN) {
@@ -48,12 +48,13 @@ void Game::acquire (void)
 void Game::update (double t, double dt)
 {
   (void)t;
-  if (this->_player.getXV()) {
+  if (this->_player.getXV() != 0) {
     this->_player.move(this->_player.getX() + dt * this->_player.getVelocity(), this->_player.getY());
-    //this->_player.setY(this->_player.getY() + dt * 1);
-  } else {
-  
+  } else if (this->_player.getYV() != 0) {
+    this->_player.move(this->_player.getX(), this->_player.getY() + dt * this->_player.getVelocity());
   }
+  this->_player.setXV(0);
+  this->_player.setYV(0);
 }
 
 void Game::render (void)

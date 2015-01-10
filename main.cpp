@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 11:07:29 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 18:33:57 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/10 19:11:55 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,32 +28,15 @@ void segv (int sig)
   endwin();
 }
 
-int main(void)
+int main (void)
 {
   Player    player;
   Game      game(player);
-
 
   signal(SIGWINCH, resize);
   signal(SIGSEGV, segv);
 
   game.loop();
-
-  /*
-  int ch;
-  while (1) {
-
-    wclear(game.getWin());
-
-    if ((ch = getch()) != ERR) {
-      waddch(game.getWin(), ch | A_UNDERLINE);
-      mvaddch(52, 52, 'A');
-    }
-
-    wrefresh(game.getWin());
-    usleep(100);
-  }
-  */
 
   return (0);
 }
