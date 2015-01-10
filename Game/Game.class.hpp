@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 11:55:30 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 14:26:04 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/10 15:03:26 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ class Game {
     ~Game (void);
 
     WINDOW * getWin (void) const;
+
+    void  loop    (void);
+    void  update  (double t, double dt);
+    void  render  (void);
 
   private:
 
