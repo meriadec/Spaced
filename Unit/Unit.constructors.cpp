@@ -42,6 +42,7 @@ Unit & Unit::operator= (Unit const & ref)
   this->_width = ref.getWidth();
   this->_x = ref.getX();
   this->_y = ref.getY();
+  this->_vel = ref.getVelocity();
 
   // TODO make sure no deep copy
   this->_geometry = ref.getGeometry();

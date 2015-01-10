@@ -14,7 +14,7 @@
 
 Player::Player (void) : Unit("player_1")
 {
-  //this->_vel = 10;
+  this->_vel = 10;
 }
 
 Player::Player (Player const & ref) : Unit(ref)
@@ -28,6 +28,6 @@ Player::~Player (void)
 
 Player & Player::operator= (Player const & ref)
 {
-  (void) ref;
+  Unit::operator=(ref);
   return *this;
 }
