@@ -6,13 +6,17 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 11:07:29 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/11 10:46:25 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/11 11:11:03 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
 #include <unistd.h>
+#include <time.h>
+#include <cstdlib>
+
 #include "Game.class.hpp"
+#include "Level.class.hpp"
 #include "Unit.class.hpp"
 
 void resize (int sig)
@@ -32,6 +36,8 @@ Game * getGame (void)
 {
   static Game * out = NULL;
 
+  //Level leve1("Level 1 - Friendly fire", 10, 2, { "enemy1", "enemy2" });
+
   if (!out) {
     out = new Game();
   }
@@ -45,6 +51,7 @@ int main (void)
 
   game->init();
 
+  std::srand(time(NULL));
   signal(SIGWINCH, resize);
   signal(SIGSEGV, segv);
 

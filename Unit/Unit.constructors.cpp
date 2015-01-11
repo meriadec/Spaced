@@ -6,15 +6,26 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 13:57:20 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 19:46:46 by mpillet          ###   ########.fr       */
+/*   Updated: 2015/01/11 10:59:32 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Unit.class.hpp"
 
-Unit::Unit (void)
+Unit::Unit (void): _width(0),
+                   _height(0),
+                   _x(0),
+                   _y(0),
+                   _xV(0),
+                   _yV(0),
+                   _vel(5),
+                   _lastX(0),
+                   _lastY(0)
 {
-  std::cout << "You do not belong here." << std::endl;
+  this->_geometry = new char*[MAX_HEIGHT];
+  for (int i = 0; i < MAX_WIDTH; i++) {
+    this->_geometry[i] = new char[MAX_WIDTH];
+  }
 }
 
 Unit::Unit (std::string const filename): _width(0),

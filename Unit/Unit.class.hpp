@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 13:56:13 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/11 10:22:21 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/11 10:57:22 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class Unit : public IObject {
 
   public:
 
+    Unit (void);
     Unit (std::string const filename);
     Unit (Unit const & ref);
     ~Unit (void);
@@ -46,14 +47,11 @@ class Unit : public IObject {
     void             setYV        (int yv);
     void             setLastX     (int x);
     void             setLastY     (int y);
+    void             setVelocity  (unsigned int v);
 
     void            setGeometry (std::string const filename);
     bool            areCollisioned (IObject const & one, IObject const & two) const;
     void            move (float const x, float const y);
-
-  private:
-
-    Unit (void);
 
   protected:
 

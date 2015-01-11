@@ -6,7 +6,7 @@
 #    By: mpillet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/05 10:14:39 by mpillet           #+#    #+#              #
-#    Updated: 2015/01/11 10:47:19 by bgronon          ###   ########.fr        #
+#    Updated: 2015/01/11 11:02:15 by mpillet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		= ft_retro
 CC			= g++
 FLAGS		= -Wall -Werror -Wextra -pedantic
 LIBS		= -L /usr/lib -lncurses
-INC			= -I Game -I List -I IObject -I Unit -I Player -I .
+INC			= -I Game -I List -I Unit -I Player -I Level -I . -I IObject -I Enemy
 
 SRC			=	main.cpp \
 					Game/Game.accesors.cpp \
@@ -29,9 +29,11 @@ SRC			=	main.cpp \
 					Unit/Unit.accesors.cpp \
 					Unit/Unit.constructors.cpp \
 					Unit/Unit.methods.cpp \
+					Level/Level.constructors.cpp \
+					Enemy/Enemy.constructors.cpp \
 
 DIR_OBJ		= .obj
-DIR_LIST	= Game IObject List Unit Player
+DIR_LIST	= Game IObject List Unit Player Level Enemy
 
 OBJ			= $(addprefix $(DIR_OBJ)/, $(SRC:.cpp=.o))
 

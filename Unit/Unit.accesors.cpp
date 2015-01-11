@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 14:02:48 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 19:50:02 by mpillet          ###   ########.fr       */
+/*   Updated: 2015/01/11 10:44:00 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ unsigned int Unit::getVelocity (void) const
   return this->_vel;
 }
 
+void Unit::setVelocity (unsigned int v)
+{
+  this->_vel = v;
+}
+
 void Unit::setXV (int xv)
 {
   this->_xV = xv;
@@ -82,4 +87,3 @@ void Unit::setLastY (int y)
 {
   this->_lastY = y;
 }
-
