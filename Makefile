@@ -14,7 +14,7 @@ NAME		= ft_retro
 CC			= g++
 FLAGS		= -Wall -Werror -Wextra -pedantic
 LIBS		= -L /usr/lib -lncurses
-INC			= -I Game -I List -I Unit -I Player -I Level -I . -I IObject -I Enemy
+INC			= -I Game -I List -I Unit -I Player -I Level -I . -I IObject -I Enemy -I Bullet
 
 SRC			=	main.cpp \
 					Game/Game.accesors.cpp \
@@ -33,9 +33,11 @@ SRC			=	main.cpp \
 					Level/Level.methods.cpp \
 					Level/Level.accesors.cpp \
 					Enemy/Enemy.constructors.cpp \
+					Bullet/Bullet.constructors.cpp \
+					Bullet/Bullet.accesors.cpp \
 
 DIR_OBJ		= .obj
-DIR_LIST	= Game IObject List Unit Player Level Enemy
+DIR_LIST	= Game IObject List Unit Player Level Enemy Bullet
 
 OBJ			= $(addprefix $(DIR_OBJ)/, $(SRC:.cpp=.o))
 

@@ -75,3 +75,18 @@ void Unit::move (float const x, float const y)
   this->_x = x;
   this->_y = y;
 }
+
+void Unit::shoot (int dX)
+{
+  bool isPlayer = (dX == 1);
+
+  for (unsigned int i = 0; i < 30; i++) {
+    if (!this->_bullets[i].isActive()) {
+      this->_bullets[i].setCoordinates(isPlayer ? (this->_x + this->_width + 1) : this->_x - 1, (this->_y + this->_height / 2));
+      this->_bullets[i].setDX(dX);
+      this->_bullets[i].setActive(1);
+      return ;
+    }
+  }
+
+}

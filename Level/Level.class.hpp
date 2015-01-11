@@ -31,6 +31,7 @@ class Level {
     int   update    (double t, double dt);
     void  render    (void);
     void  draw      (Unit & unit, int color);
+    void  draw      (Bullet & unit);
     void  drawStats (void);
     void  over      (void);
 
