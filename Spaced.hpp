@@ -15,6 +15,8 @@
 
 # include "Game.class.hpp"
 
+# define PLYR         getGame()->getPlayer()
+
 Game * getGame (void);
 
 #endif

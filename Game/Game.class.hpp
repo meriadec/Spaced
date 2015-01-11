@@ -32,13 +32,10 @@ class Game {
     int      getHeight (void) const;
 
     void  loop      (void);
-    void  update    (double t, double dt);
-    void  render    (void);
-    void  draw      (Unit & unit);
-    void  drawStats (void);
-    void  acquire   (void);
     void  init      (void);
     void  destroy   (void);
+
+    Player & getPlayer (void);
 
   private:
 

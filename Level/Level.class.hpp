@@ -19,18 +19,26 @@ class Level {
 
   public:
 
-    Level (std::string & title, unsigned int nb, unsigned int nbSprites, char *sprites[]);
+    Level (std::string title, unsigned int nb, unsigned int nbSprites, std::string sprites[]);
     Level (Level const & ref);
     ~Level (void);
 
     Level & operator= (Level const & ref);
 
+    void  loop      (void);
+    void  acquire   (void);
+    void  update    (double t, double dt);
+    void  render    (void);
+    void  draw      (Unit & unit);
+    void  drawStats (void);
+
   private:
 
     Level (void);
 
-    Unit *          _units;
     std::string     _title;
+    unsigned int    _nb;
+    Unit *          _units;
 
 };
 

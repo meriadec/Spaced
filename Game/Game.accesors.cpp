@@ -26,3 +26,8 @@ int Game::getHeight (void) const
 {
   return this->_height;
 }
+
+Player & Game::getPlayer (void)
+{
+  return this->_player;
+}

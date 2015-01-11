@@ -11,17 +11,22 @@
 /* ************************************************************************** */
 
 #include <cstdlib>
+#include <iostream>
 #include "Level.class.hpp"
 
 Level::Level (void)
 {
 }
 
-Level::Level (std::string & title, unsigned int nb, unsigned int nbSprites, char *sprites[]) : _title(title)
+Level::Level (std::string title, unsigned int nb, unsigned int nbSprites, std::string sprites[]) : _title(title), _nb(nb)
 {
+  std::string geo;
+
   this->_units = new Unit[nb];
   for (unsigned int i = 0; i < nb; i++) {
-    this->_units[i].setGeometry(sprites[std::rand() % nbSprites]);
+    geo = sprites[std::rand() % nbSprites];
+    this->_units[i].setGeometry(geo);
+    this->_units[i].setVelocity(10 + (std::rand() % nbSprites));
   }
 }
 

@@ -10,11 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include "Player.class.hpp"
 
 Player::Player (void) : Unit("player_1")
 {
-  this->_vel = 10;
+  this->_vel = 20;
 }
 
 Player::Player (Player const & ref) : Unit(ref)

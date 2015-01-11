@@ -36,8 +36,6 @@ Game * getGame (void)
 {
   static Game * out = NULL;
 
-  //Level leve1("Level 1 - Friendly fire", 10, 2, { "enemy1", "enemy2" });
-
   if (!out) {
     out = new Game();
   }
