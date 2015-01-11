@@ -139,10 +139,6 @@ int Level::update (double t, double dt)
 
   Unit * unit;
 
-  // boucle dans ennemis
-  // si xmin, xmax
-  // si xmax, on fait un rand y
-  // deplacement vers la gauche en fonction de vitesse
   for (unsigned int i = 0; i < this->getNb(); i++) {
 
     unit = &((this->getUnits())[i]);
