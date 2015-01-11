@@ -59,8 +59,7 @@ void Game::destroy (void)
 void Game::loop (void)
 {
   std::string level1_sprites[] = { "enemy1", "enemy2", "enemy3" };
-  Level level1("Level 1 - Friendly fire", 0.005, 10, 3, level1_sprites);
-
+  Level level1("Level 1 - Friendly fire", 0.008, 10, 3, level1_sprites);
   level1.start();
   level1.loop();
 }
