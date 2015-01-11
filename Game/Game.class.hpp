@@ -35,6 +35,7 @@ class Game {
     void  init      (void);
     void  destroy   (void);
 
+    void     setPlayer (Player & player);
     Player & getPlayer (void);
 
   private:

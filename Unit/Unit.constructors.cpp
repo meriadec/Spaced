@@ -52,6 +52,10 @@ Unit::Unit (Unit const & ref)
 
 Unit::~Unit (void)
 {
+  for (int j = 0; j < MAX_HEIGHT; j++) {
+    delete this->_geometry[j];
+  }
+  delete this->_geometry;
 }
 
 Unit & Unit::operator= (Unit const & ref)

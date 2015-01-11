@@ -14,7 +14,6 @@
 
 Game::Game (void)
 {
-  this->_player = Player();
 }
 
 Game::Game (Game const & ref)
