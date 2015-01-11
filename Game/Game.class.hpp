@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 11:55:30 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 19:58:24 by mpillet          ###   ########.fr       */
+/*   Updated: 2015/01/11 10:42:59 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,33 +20,35 @@
 # include "Player.class.hpp"
 # include "List.class.hpp"
 
-# define MAX_HEIGHT 89
-# define MAX_WIDTH 364
-
 class Game {
 
   public:
 
-    Game  (Player const & player);
+    Game  (void);
     ~Game (void);
 
     WINDOW * getWin (void) const;
+    int      getWidth (void) const;
+    int      getHeight (void) const;
 
     void  loop    (void);
     void  update  (double t, double dt);
     void  render  (void);
     void  draw    (Unit & unit);
     void  acquire (void);
+    void  init    (void);
+    void  destroy (void);
 
   private:
 
-    Game (void);
     Game & operator= (Game const & ref);
     Game (Game const & ref);
 
     WINDOW *  _win;
     List *    _enemies;
     Player    _player;
+    int       _height;
+    int       _width;
 
 };
 

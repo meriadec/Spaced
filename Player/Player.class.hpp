@@ -6,7 +6,7 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 16:45:43 by mpillet           #+#    #+#             */
-/*   Updated: 2015/01/10 18:14:18 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/11 09:49:13 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ class Player : public Unit {
     ~Player (void);
 
     Player & operator= (Player const & ref);
-
-    void    move (float const x, float const y);
 
 };
 

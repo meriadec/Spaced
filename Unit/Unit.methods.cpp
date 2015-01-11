@@ -6,12 +6,13 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 14:08:43 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 16:51:32 by mpillet          ###   ########.fr       */
+/*   Updated: 2015/01/11 10:46:13 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fstream>
 #include "Unit.class.hpp"
+#include "Spaced.hpp"
 
 void Unit::setGeometry (std::string const filename)
 {
@@ -41,17 +42,23 @@ void Unit::setGeometry (std::string const filename)
   }
 }
 
-bool Unit::areCollisioned (Unit const & one, Unit const & two) const
+bool Unit::areCollisioned (IObject const & one, IObject const & two) const
 {
   unsigned int i = 0;
   unsigned int j;
   char ** geoOne = one.getGeometry();
   char ** geoTwo = two.getGeometry();
 
-  while (i < one.getHeight() && i < two.getHeight()) {
+  // TODO handle specific geometry
+  (void)geoOne;
+  (void)geoTwo;
+
+  while (i < one.getHeight()) {
     j = 0;
-    while (j < one.getWidth() && i < two.getWidth()) {
-      if (geoOne[i][j] != ' ' && geoTwo[i][j] != ' ') {
+    while (j < one.getWidth()) {
+      if (int(one.getY() + i) == int(two.getY()) &&
+          int(one.getX() + j) == int(two.getX()) &&
+          geoOne[i][j] != ' ') {
         return true;
       }
       ++j;
@@ -59,4 +66,25 @@ bool Unit::areCollisioned (Unit const & one, Unit const & two) const
     ++i;
   }
   return false;
+}
+
+void Unit::move (float const x, float const y)
+{
+  if (x < 0) {
+    this->_x = 0;
+    return ;
+  }
+  if (y < 0) {
+    this->_y = 0;
+    return ;
+  }
+  if (x + this->_height >= getGame()->getHeight()) {
+    return ;
+  }
+  if (y + this->_width >= getGame()->getWidth()) {
+    return ;
+  }
+
+  this->_x = x;
+  this->_y = y;
 }

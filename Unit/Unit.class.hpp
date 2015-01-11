@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 13:56:13 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 19:48:56 by mpillet          ###   ########.fr       */
+/*   Updated: 2015/01/11 10:22:21 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@
 # include <iostream>
 # include <string>
 
+# include "IObject.class.hpp"
+
 # define MAX_HEIGHT 89
 # define MAX_WIDTH 364
 
-class Unit {
+class Unit : public IObject {
 
   public:
 
@@ -46,8 +48,8 @@ class Unit {
     void             setLastY     (int y);
 
     void            setGeometry (std::string const filename);
-    bool            areCollisioned (Unit const & one, Unit const & two) const;
-    virtual void    move (float const x, float const y) = 0;
+    bool            areCollisioned (IObject const & one, IObject const & two) const;
+    void            move (float const x, float const y);
 
   private:
 

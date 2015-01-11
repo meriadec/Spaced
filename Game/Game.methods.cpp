@@ -6,13 +6,42 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 12:11:09 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 20:31:56 by mpillet          ###   ########.fr       */
+/*   Updated: 2015/01/11 09:28:31 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ctime>
 #include <iostream>
+#include <stdlib.h>
 #include "Game.class.hpp"
+
+void Game::init (void)
+{
+  if (!initscr()) {
+    exit(1);
+  }
+
+  int h, w;
+
+  getmaxyx(stdscr, h, w);
+  this->_height = h;
+  this->_width = w;
+
+  this->_win = newwin(h, w, 0, 0);
+
+  noecho();
+  nodelay(stdscr, 1);
+  keypad(stdscr, 1);
+  wmove(this->_win, 0, 0);
+  curs_set(0);
+}
+
+void Game::destroy (void)
+{
+  delwin(this->_win);
+  endwin();
+  wrefresh(this->_win);
+}
 
 void Game::loop (void)
 {

@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 11:07:29 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/10 19:46:07 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/11 10:46:25 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,31 @@ void segv (int sig)
   endwin();
 }
 
+Game * getGame (void)
+{
+  static Game * out = NULL;
+
+  if (!out) {
+    out = new Game();
+  }
+
+  return out;
+}
+
 int main (void)
 {
-  Player    player;
-  Game      game(player);
+  Game    * game = getGame();
+
+  game->init();
 
   signal(SIGWINCH, resize);
   signal(SIGSEGV, segv);
 
-  game.loop();
+  game->loop();
+
+  game->destroy();
+
+  delete game;
 
   return (0);
 }
