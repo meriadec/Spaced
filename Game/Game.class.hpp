@@ -35,7 +35,6 @@ class Game {
     void  destroy   (void);
 
     void     setPlayer (Player & player);
-    Player & getPlayer (void);
 
   private:
 

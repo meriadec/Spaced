@@ -63,8 +63,3 @@ void Game::loop (void)
   level1.start();
   level1.loop();
 }
-
-void Game::setPlayer (Player & player)
-{
-  this->_player = player;
-}

@@ -49,9 +49,7 @@ void segv (int sig)
 int main (void)
 {
   Game *    game = getGame();
-  Player    player;
 
-  game->setPlayer(player);
   game->init();
 
   std::srand(time(NULL));

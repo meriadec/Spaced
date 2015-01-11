@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "Player.class.hpp"
 
 Player::Player (void) : Unit("player_1")
