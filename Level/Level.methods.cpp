@@ -184,7 +184,7 @@ int Level::update (double t, double dt)
     }
 
     if (unit->getX() + unit->getWidth() <= 0)   { unit->setX(getGame()->getWidth()); }
-    if (unit->getX() == getGame()->getWidth())  { unit->setY(std::rand() % getGame()->getHeight()); }
+    if (unit->getX() == getGame()->getWidth())  { unit->setY(std::rand() % (getGame()->getHeight() - unit->getHeight())); }
 
     unit->setX(unit->getX() - dt * this->_speed * unit->getVelocity());
 
@@ -296,4 +296,9 @@ int Level::getRemainingNumber (void) const
     }
   }
   return out;
+}
+
+void Level::setBoss (void)
+{
+  this->_units[0].setHealth(200);
 }

@@ -69,7 +69,7 @@ void Game::loop (void)
     "lv1/enemy3"
   };
 
-  Level level1("Level 1 - Friendly fire", 0.008, 5, 3, level1_sprites);
+  Level level1("Level 1 - Friendly fire", 0.008, 10, 3, level1_sprites);
   level1.start();
   level1.loop();
 
@@ -77,13 +77,25 @@ void Game::loop (void)
   // -------
 
   std::string level2_sprites[] = {
-    "lv2/enemy1",
-    "lv2/enemy2",
-    "lv2/enemy3"
+    "lv2/alien",
+    "lv2/brain",
+    "lv2/banana"
   };
 
   Level level2("Level 2 - Mars Attack", 0.01, 10, 3, level2_sprites);
   level2.start();
   level2.loop();
+
+  // Boss
+  // ----
+
+  std::string level3_sprites[] = {
+    "boss1"
+  };
+
+  Level level3("PREPARE FOR THE BOOSSSSS WAVE", 0.01, 1, 1, level3_sprites);
+  level3.setBoss();
+  level3.start();
+  level3.loop();
 
 }

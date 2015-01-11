@@ -54,6 +54,7 @@ class Unit : public IObject {
     void             setLastY     (int y);
     void             setVelocity  (unsigned int v);
     void             takeDamage   (int dmg);
+    void             setHealth    (int h);
 
     void            setGeometry (std::string const filename);
     bool            isCollisioned (IObject const & other) const;

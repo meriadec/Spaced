@@ -106,3 +106,8 @@ void Unit::setLastY (int y)
 {
   this->_lastY = y;
 }
+
+void Unit::setHealth (int h)
+{
+  this->_health = h;
+}

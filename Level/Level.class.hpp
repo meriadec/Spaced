@@ -39,6 +39,7 @@ class Level {
     Unit *              getUnits  (void) const;
     std::string const & getTitle  (void) const;
     int                 getRemainingNumber (void) const;
+    void                setBoss(void);
 
   private:
 
