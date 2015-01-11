@@ -17,6 +17,7 @@
 # include <string>
 
 # include "IObject.class.hpp"
+# include "Bullet.class.hpp"
 
 # define MAX_HEIGHT 89
 # define MAX_WIDTH 364
@@ -43,6 +44,7 @@ class Unit : public IObject {
     int              getHealth   (void) const;
     char **          getGeometry (void) const;
     unsigned int     getVelocity (void) const;
+    Bullet *         getBullets  (void) const;
 
     void             setX         (float x);
     void             setY         (float y);
@@ -55,6 +57,7 @@ class Unit : public IObject {
     void            setGeometry (std::string const filename);
     bool            isCollisioned (IObject const & other) const;
     void            move (float const x, float const y);
+    void            shoot (int dX);
 
   protected:
 
@@ -69,6 +72,7 @@ class Unit : public IObject {
     int              _lastY;
     char **          _geometry;
     int              _health;
+    Bullet *         _bullets;
 
 };
 

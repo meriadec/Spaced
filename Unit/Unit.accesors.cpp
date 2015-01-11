@@ -27,6 +27,11 @@ unsigned int Unit::getHeight (void) const
   return this->_height;
 }
 
+Bullet * Unit::getBullets (void) const
+{
+  return this->_bullets;
+}
+
 float Unit::getX (void) const
 {
   return this->_x;

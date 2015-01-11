@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 13:57:20 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/11 10:59:32 by mpillet          ###   ########.fr       */
+/*   Updated: 2015/01/11 18:31:45 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ Unit::Unit (void): _width(0),
                    _lastY(0)
 {
   this->_geometry = new char*[MAX_HEIGHT];
+  this->_bullets = new Bullet[30];
 }
 
 Unit::Unit (std::string const filename): _width(0),
@@ -37,6 +38,7 @@ Unit::Unit (std::string const filename): _width(0),
 {
   this->_geometry = new char*[MAX_HEIGHT];
   this->setGeometry(filename);
+  this->_bullets = new Bullet[30];
 }
 
 Unit::Unit (Unit const & ref)

@@ -17,6 +17,7 @@
 #include "Spaced.hpp"
 #include "Level.class.hpp"
 #include "Game.class.hpp"
+#include "Bullet.class.hpp"
 
 void Level::start (void)
 {
@@ -110,6 +111,7 @@ void Level::acquire (void)
     else if (ch == KEY_UP)    { PLYR.setYV(-1); }
     else if (ch == KEY_RIGHT) { PLYR.setXV(1);  }
     else if (ch == KEY_LEFT)  { PLYR.setXV(-1); }
+    else if (ch == ' ') { PLYR.shoot(1); }
   }
 }
 
@@ -133,6 +135,22 @@ int Level::update (double t, double dt)
 
   PLYR.setXV(0);
   PLYR.setYV(0);
+
+  // Moving bullets
+  // --------------
+
+  Bullet * bullets = PLYR.getBullets();
+  double redBull;
+  for (unsigned int i = 0; i < 30; i++) {
+
+    if (bullets[i].getX() > getGame()->getWidth()) {
+      bullets[i].setCoordinates(0, 0);
+      bullets[i].setActive(0);
+    }
+
+    redBull = (bullets[i].getDX() == -1 ? -dt : dt);
+    bullets[i].setCoordinates(bullets[i].getX() + redBull * this->_speed * bullets[i].getVelocity(), bullets[i].getY());
+  }
 
   // Moving enemies
   // --------------
@@ -162,6 +180,11 @@ void Level::render (void)
   Game * game = getGame();
 
   this->draw(game->getPlayer(), 3);
+
+  Bullet * bullets = PLYR.getBullets();
+  for (unsigned int i = 0; i < 30; i++) {
+    this->draw(bullets[i]);
+  }
 
   Unit * units = this->getUnits();
 
@@ -201,6 +224,23 @@ void Level::draw (Unit & unit, int color)
     }
     ++j;
   }
+
+  unit.setLastX(x);
+  unit.setLastY(y);
+}
+
+void Level::draw (Bullet & unit)
+{
+  if (!unit.isActive()) {
+    return ;
+  }
+
+  int  x = int(unit.getX());
+  int  y = int(unit.getY());
+  Game * game = getGame();
+
+  mvwaddch(game->getWin(), unit.getLastY(), unit.getLastX(), ' ');
+  mvwaddch(game->getWin(), y, x, unit.getChar() | COLOR_PAIR(unit.getColor()));
 
   unit.setLastX(x);
   unit.setLastY(y);
