@@ -31,6 +31,7 @@ SRC			=	main.cpp \
 					Unit/Unit.methods.cpp \
 					Level/Level.constructors.cpp \
 					Level/Level.methods.cpp \
+					Level/Level.accesors.cpp \
 					Enemy/Enemy.constructors.cpp \
 
 DIR_OBJ		= .obj

@@ -40,9 +40,12 @@ class Unit : public IObject {
     int              getLastY    (void) const;
     int              getXV       (void) const;
     int              getYV       (void) const;
+    int              getHealth   (void) const;
     char **          getGeometry (void) const;
     unsigned int     getVelocity (void) const;
 
+    void             setX         (int x);
+    void             setY         (int y);
     void             setXV        (int xv);
     void             setYV        (int yv);
     void             setLastX     (int x);
@@ -65,6 +68,7 @@ class Unit : public IObject {
     int              _lastX;
     int              _lastY;
     char **          _geometry;
+    int              _health;
 
 };
 

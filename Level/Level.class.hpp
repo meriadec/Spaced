@@ -32,6 +32,10 @@ class Level {
     void  draw      (Unit & unit);
     void  drawStats (void);
 
+    unsigned int        getNb     (void) const;
+    Unit *              getUnits  (void) const;
+    std::string const & getTitle  (void) const;
+
   private:
 
     Level (void);

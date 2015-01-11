@@ -37,6 +37,11 @@ float Unit::getY (void) const
   return this->_y;
 }
 
+int Unit::getHealth (void) const
+{
+  return this->_health;
+}
+
 int Unit::getLastX (void) const
 {
   return this->_lastX;
@@ -67,6 +72,16 @@ void Unit::setVelocity (unsigned int v)
   this->_vel = v;
 }
 
+void Unit::setX (int x)
+{
+  this->_x = x;
+}
+
+void Unit::setY (int y)
+{
+  this->_y = y;
+}
+
 void Unit::setXV (int xv)
 {
   this->_xV = xv;
@@ -76,7 +91,6 @@ void Unit::setYV (int yv)
 {
   this->_yV = yv;
 }
-
 
 void Unit::setLastX (int x)
 {

@@ -43,7 +43,7 @@ void Level::acquire (void)
 
 void Level::update (double t, double dt)
 {
-  (void)t;
+  (void) t;
 
   if (PLYR.getXV() == 1) {
     PLYR.move(PLYR.getX() + dt * PLYR.getVelocity(), PLYR.getY());
@@ -55,6 +55,13 @@ void Level::update (double t, double dt)
     PLYR.move(PLYR.getX(), PLYR.getY() - dt * PLYR.getVelocity());
   }
 
+  // boucle dans ennemis
+  // si xmin, xmax
+  // si xmax, on fait un rand y
+  // deplacement vers la gauche en fonction de vitesse
+  for (unsigned int i = 0; i < this->getNb(); i++) {
+  }
+
   PLYR.setXV(0);
   PLYR.setYV(0);
 }
@@ -62,7 +69,12 @@ void Level::update (double t, double dt)
 void Level::render (void)
 {
   Game * game = getGame();
+
   this->draw(game->getPlayer());
+
+  // boucle dans ennemis
+  // draw
+
   this->drawStats();
   wrefresh(game->getWin());
 }
