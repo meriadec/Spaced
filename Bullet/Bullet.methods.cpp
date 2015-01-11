@@ -21,7 +21,6 @@ void Bullet::move (float const x, float const y)
 
 bool Bullet::isCollisioned (IObject const & other) const
 {
-  mvwprintw(getGame()->getWin(), getGame()->getHeight() - 10, 0, "[X: %d, Y: %f])", int(this->_x), this->_y);
   if (this->_x >= other.getX() && this->_x < (other.getX() + other.getWidth())
       && this->_y >= other.getY() && this->_y < (other.getY() + other.getHeight())) {
     return true;

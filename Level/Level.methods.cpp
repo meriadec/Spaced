@@ -26,7 +26,7 @@ void Level::start (void)
 
   std::string s1 ("[ SPACED ]");
   std::string s2 (" Welcome to " + this->_title + "! ");
-  std::string s3 ("Please press space.");
+  std::string s3 ("Please press enter.");
   std::ostringstream ss;
   ss << PLYR.getLifes();
   std::string s4 ("You got " + ss.str() + " lifes left.");
@@ -49,7 +49,7 @@ void Level::start (void)
 
     wrefresh(game->getWin());
     if ((ch = getch()) != ERR) {
-      if (ch == ' ') {
+      if (ch == '\n') {
         werase(game->getWin());
         break ;
       }
@@ -63,7 +63,7 @@ void Level::over (void)
   Game * game = getGame();
   std::string s1 ("[ SPACED ]");
   std::string s2 ("You loose!");
-  std::string s3 ("Please press space to quit.");
+  std::string s3 ("Please press enter to quit.");
 
   mvwprintw(game->getWin(), game->getHeight() / 2 - 5, game->getWidth() / 2 - s1.length() / 2, s1.c_str());
   wattrset(game->getWin(), COLOR_PAIR(4));
@@ -74,7 +74,7 @@ void Level::over (void)
   wrefresh(game->getWin());
   while (1) {
     if ((ch = getch()) != ERR) {
-      if (ch == ' ') {
+      if (ch == '\n') {
         game->destroy();
         exit(0);
       }
@@ -91,6 +91,9 @@ void Level::loop (void)
     this->acquire();
     if (this->update(t, dt) == 1) {
       break ;
+    }
+    if (this->getRemainingNumber() == 0) {
+      return ;
     }
     this->render();
     t += dt;
@@ -213,7 +216,7 @@ void Level::render (void)
     }
   }
 
-  this->drawStats();
+  //this->drawStats();
   wrefresh(game->getWin());
 }
 
@@ -280,4 +283,17 @@ void Level::drawStats (void)
       int(game->getPlayer().getX()),
       game->getPlayer().getWidth(),
       game->getPlayer().getHeight());
+}
+
+int Level::getRemainingNumber (void) const
+{
+  Unit * unit;
+  int out = 0;
+  for (unsigned int i = 0; i < this->getNb(); i++) {
+    unit = &((this->getUnits())[i]);
+    if (unit->getHealth() > 0) {
+      ++out;
+    }
+  }
+  return out;
 }
