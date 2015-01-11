@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 11:55:30 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/11 10:42:59 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/11 11:01:38 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,14 @@ class Game {
     int      getWidth (void) const;
     int      getHeight (void) const;
 
-    void  loop    (void);
-    void  update  (double t, double dt);
-    void  render  (void);
-    void  draw    (Unit & unit);
-    void  acquire (void);
-    void  init    (void);
-    void  destroy (void);
+    void  loop      (void);
+    void  update    (double t, double dt);
+    void  render    (void);
+    void  draw      (Unit & unit);
+    void  drawStats (void);
+    void  acquire   (void);
+    void  init      (void);
+    void  destroy   (void);
 
   private:
 

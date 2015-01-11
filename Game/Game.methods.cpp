@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 12:11:09 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/11 09:28:31 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/11 11:09:44 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void Game::update (double t, double dt)
 void Game::render (void)
 {
   this->draw(this->_player);
+  this->drawStats();
   wrefresh(this->_win);
 }
 
@@ -126,4 +127,11 @@ void Game::draw (Unit & unit)
 
   unit.setLastX(x);
   unit.setLastY(y);
+}
+
+void Game::drawStats (void)
+{
+  mvwprintw(this->_win, this->_height - 1, 0, "[%d, %d] ",
+      int(this->_player.getX()),
+      int(this->_player.getY()));
 }

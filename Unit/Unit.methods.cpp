@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 14:08:43 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/11 10:57:38 by mpillet          ###   ########.fr       */
+/*   Updated: 2015/01/11 11:11:19 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,19 +52,10 @@ bool Unit::areCollisioned (IObject const & one, IObject const & two) const
   // TODO handle specific geometry
   (void)geoOne;
   (void)geoTwo;
+  (void)i;
+  (void)j;
 
-  while (i < one.getHeight()) {
-    j = 0;
-    while (j < one.getWidth()) {
-      if (int(one.getY() + i) == int(two.getY()) &&
-          int(one.getX() + j) == int(two.getX()) &&
-          geoOne[i][j] != ' ') {
-        return true;
-      }
-      ++j;
-    }
-    ++i;
-  }
+
   return false;
 }
 
