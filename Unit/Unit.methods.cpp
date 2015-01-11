@@ -29,6 +29,7 @@ void Unit::setGeometry (std::string const filename)
 
       length = line.length();
 
+      this->_geometry[y] = new char[line.length()];
       std::copy(line.begin(), line.end(), this->_geometry[y]);
       this->_geometry[y][length] = '\0';
 

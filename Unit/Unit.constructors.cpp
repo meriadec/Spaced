@@ -23,9 +23,6 @@ Unit::Unit (void): _width(0),
                    _lastY(0)
 {
   this->_geometry = new char*[MAX_HEIGHT];
-  for (int i = 0; i < MAX_WIDTH; i++) {
-    this->_geometry[i] = new char[MAX_WIDTH];
-  }
 }
 
 Unit::Unit (std::string const filename): _width(0),
@@ -39,9 +36,6 @@ Unit::Unit (std::string const filename): _width(0),
                                          _lastY(0)
 {
   this->_geometry = new char*[MAX_HEIGHT];
-  for (int i = 0; i < MAX_WIDTH; i++) {
-    this->_geometry[i] = new char[MAX_WIDTH];
-  }
   this->setGeometry(filename);
 }
 
