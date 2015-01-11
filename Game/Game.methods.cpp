@@ -51,8 +51,8 @@ void Game::init (void)
 void Game::destroy (void)
 {
   delwin(this->_win);
+  delwin(stdscr);
   endwin();
-  wrefresh(this->_win);
 }
 
 void Game::loop (void)

@@ -15,6 +15,7 @@
 
 Player::Player (void) : Unit("player_1")
 {
+  this->_lifes = 3;
   this->_vel = 20;
 }
 

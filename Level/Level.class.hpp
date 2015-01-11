@@ -28,10 +28,11 @@ class Level {
     void  start     (void);
     void  loop      (void);
     void  acquire   (void);
-    void  update    (double t, double dt);
+    int   update    (double t, double dt);
     void  render    (void);
     void  draw      (Unit & unit);
     void  drawStats (void);
+    void  over      (void);
 
     unsigned int        getNb     (void) const;
     Unit *              getUnits  (void) const;

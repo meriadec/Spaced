@@ -19,19 +19,6 @@
 #include "Level.class.hpp"
 #include "Unit.class.hpp"
 
-void resize (int sig)
-{
-  (void) sig;
-  printw("No resize...");
-}
-
-void segv (int sig)
-{
-  (void) sig;
-  std::cout << "SEGFAULT BITCH, RESETTING..." << std::endl;
-  endwin();
-}
-
 Game * getGame (void)
 {
   static Game * out = NULL;
@@ -41,6 +28,22 @@ Game * getGame (void)
   }
 
   return out;
+}
+
+void resize (int sig)
+{
+  (void) sig;
+  getGame()->destroy();
+  std::cout << "Cheater detected, Punkbuster.exe killed the program." << std::endl;
+  exit(0);
+}
+
+void segv (int sig)
+{
+  (void) sig;
+  getGame()->destroy();
+  std::cout << "SEGFAULT BITCH, RESETTING..." << std::endl;
+  exit(0);
 }
 
 int main (void)

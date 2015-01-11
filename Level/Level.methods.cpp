@@ -13,6 +13,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <stdlib.h>
+#include <sstream>
 #include "Spaced.hpp"
 #include "Level.class.hpp"
 #include "Game.class.hpp"
@@ -25,6 +26,15 @@ void Level::start (void)
   std::string s1 ("[ SPACED ]");
   std::string s2 ("Welcome to " + this->_title + "!");
   std::string s3 ("Please press space.");
+  std::ostringstream ss;
+  ss << PLYR.getLifes();
+  std::string s4 ("You got " + ss.str() + " lifes left.");
+
+  for (unsigned int i = 0; i < this->_nb; i++) {
+    this->_units[i].setX(getGame()->getWidth());
+  }
+  PLYR.setX(4);
+  PLYR.setY(4);
 
   while (1) {
 
@@ -33,12 +43,38 @@ void Level::start (void)
     mvwprintw(game->getWin(), game->getHeight() / 2, game->getWidth() / 2 - s2.length() / 2, s2.c_str());
     wattroff(game->getWin(), COLOR_PAIR(3));
     mvwprintw(game->getWin(), game->getHeight() / 2 + 2, game->getWidth() / 2 - s3.length() / 2, s3.c_str());
+    mvwprintw(game->getWin(), game->getHeight() / 2 + 3, game->getWidth() / 2 - s4.length() / 2, s4.c_str());
 
     wrefresh(game->getWin());
     if ((ch = getch()) != ERR) {
       if (ch == ' ') {
         werase(game->getWin());
         break ;
+      }
+    }
+  }
+}
+
+void Level::over (void)
+{
+  int ch;
+  Game * game = getGame();
+  std::string s1 ("[ SPACED ]");
+  std::string s2 ("You loose!");
+  std::string s3 ("Please press space to quit.");
+
+  mvwprintw(game->getWin(), game->getHeight() / 2 - 5, game->getWidth() / 2 - s1.length() / 2, s1.c_str());
+  wattrset(game->getWin(), COLOR_PAIR(3));
+  mvwprintw(game->getWin(), game->getHeight() / 2, game->getWidth() / 2 - s2.length() / 2, s2.c_str());
+  wattroff(game->getWin(), COLOR_PAIR(3));
+  mvwprintw(game->getWin(), game->getHeight() / 2 + 2, game->getWidth() / 2 - s3.length() / 2, s3.c_str());
+
+  wrefresh(game->getWin());
+  while (1) {
+    if ((ch = getch()) != ERR) {
+      if (ch == ' ') {
+        game->destroy();
+        exit(0);
       }
     }
   }
@@ -51,9 +87,17 @@ void Level::loop (void)
 
   while (1) {
     this->acquire();
-    this->update(t, dt);
+    if (this->update(t, dt) == 1) {
+      break ;
+    }
     this->render();
     t += dt;
+  }
+  if (PLYR.getLifes() > 0) {
+    this->start();
+    this->loop();
+  } else if (PLYR.getLifes() == 0) {
+    this->over();
   }
 }
 
@@ -69,7 +113,7 @@ void Level::acquire (void)
   }
 }
 
-void Level::update (double t, double dt)
+int Level::update (double t, double dt)
 {
 
   (void) t;
@@ -109,10 +153,12 @@ void Level::update (double t, double dt)
     unit->setX(unit->getX() - dt * this->_speed * unit->getVelocity());
 
     if (PLYR.isCollisioned(*unit)) {
-      exit(0);
+      PLYR.die();
+      return (1);
     }
 
   }
+  return (0);
 }
 
 void Level::render (void)
