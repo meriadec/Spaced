@@ -18,6 +18,8 @@ Bullet::Bullet (void): _damage(10),
                        _vel(40),
                        _x(0),
                        _y(0),
+                       _lastX(0),
+                       _lastY(0),
                        _dX(0),
                        _color(5)
 {

@@ -34,6 +34,7 @@ void Level::start (void)
   for (unsigned int i = 0; i < this->_nb; i++) {
     this->_units[i].setX(getGame()->getWidth());
   }
+
   PLYR.setX(4);
   PLYR.setY(4);
 
@@ -136,6 +137,9 @@ int Level::update (double t, double dt)
   PLYR.setXV(0);
   PLYR.setYV(0);
 
+
+  Unit * unit;
+
   // Moving bullets
   // --------------
 
@@ -150,16 +154,31 @@ int Level::update (double t, double dt)
 
     redBull = (bullets[i].getDX() == -1 ? -dt : dt);
     bullets[i].setCoordinates(bullets[i].getX() + redBull * this->_speed * bullets[i].getVelocity(), bullets[i].getY());
+
+    if (bullets[i].isActive()) {
+      // check intersect with all the ennemies
+      for (unsigned int i = 0; i < this->getNb(); i++) {
+        unit = &((this->getUnits())[i]);
+
+        if (bullets[i].isCollisioned(*unit)) {
+          unit->takeDamage(bullets[i].getDamage());
+          bullets[i].setActive(0);
+          bullets[i].setCoordinates(0, 0);
+        }
+      }
+    }
   }
 
   // Moving enemies
   // --------------
 
-  Unit * unit;
-
   for (unsigned int i = 0; i < this->getNb(); i++) {
 
     unit = &((this->getUnits())[i]);
+
+    if (unit->getHealth() <= 0) {
+      continue ;
+    }
 
     if (unit->getX() + unit->getWidth() <= 0)   { unit->setX(getGame()->getWidth()); }
     if (unit->getX() == getGame()->getWidth())  { unit->setY(std::rand() % getGame()->getHeight()); }
@@ -189,7 +208,9 @@ void Level::render (void)
   Unit * units = this->getUnits();
 
   for (unsigned int i = 0; i < this->getNb(); i++) {
-    this->draw(units[i], 0);
+    if (units[i].getHealth() > 0) {
+      this->draw(units[i], 0);
+    }
   }
 
   this->drawStats();
@@ -200,11 +221,11 @@ void Level::draw (Unit & unit, int color)
 {
   Game * game = getGame();
 
-  unsigned int  j     = 0;
-  unsigned int  i     = 0;
-  unsigned int  x     = int(unit.getX());
-  unsigned int  y     = int(unit.getY());
-  char **       geo   = unit.getGeometry();
+  unsigned int  j   = 0;
+  unsigned int  i   = 0;
+  unsigned int  x   = int(unit.getX());
+  unsigned int  y   = int(unit.getY());
+  char **       geo = unit.getGeometry();
 
   while (j < unit.getHeight()) {
     i = 0;
@@ -231,15 +252,17 @@ void Level::draw (Unit & unit, int color)
 
 void Level::draw (Bullet & unit)
 {
-  if (!unit.isActive()) {
-    return ;
-  }
 
   int  x = int(unit.getX());
   int  y = int(unit.getY());
   Game * game = getGame();
 
   mvwaddch(game->getWin(), unit.getLastY(), unit.getLastX(), ' ');
+
+  if (!unit.isActive()) {
+    return ;
+  }
+
   mvwaddch(game->getWin(), y, x, unit.getChar() | COLOR_PAIR(unit.getColor()));
 
   unit.setLastX(x);

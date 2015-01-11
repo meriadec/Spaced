@@ -24,6 +24,7 @@ Unit::Unit (void): _width(0),
 {
   this->_geometry = new char*[MAX_HEIGHT];
   this->_bullets = new Bullet[30];
+  this->_health = 20;
 }
 
 Unit::Unit (std::string const filename): _width(0),
@@ -39,6 +40,7 @@ Unit::Unit (std::string const filename): _width(0),
   this->_geometry = new char*[MAX_HEIGHT];
   this->setGeometry(filename);
   this->_bullets = new Bullet[30];
+  this->_health = 20;
 }
 
 Unit::Unit (Unit const & ref)

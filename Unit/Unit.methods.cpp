@@ -6,13 +6,36 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 14:08:43 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/11 11:58:17 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/11 20:08:19 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fstream>
+#include <cstdlib>
 #include "Unit.class.hpp"
 #include "Spaced.hpp"
+
+void Unit::takeDamage (int dmg)
+{
+  unsigned int  j = 0;
+  unsigned int  i = 0;
+
+  this->_health -= dmg;
+  if (this->_health <= 0) {
+
+    while (j < this->getHeight()) {
+      i = 0;
+      while (i < this->getWidth()) {
+        mvwaddch(getGame()->getWin(), j + this->getLastY(), i + this->getLastX(), ' ');
+        ++i;
+      }
+      ++j;
+    }
+
+    this->setX(getGame()->getWidth());
+    this->setY(std::rand() % getGame()->getHeight());
+  }
+}
 
 void Unit::setGeometry (std::string const filename)
 {
@@ -96,7 +119,8 @@ void Unit::shoot (int dX)
 
   for (unsigned int i = 0; i < 30; i++) {
     if (!this->_bullets[i].isActive()) {
-      this->_bullets[i].setCoordinates(isPlayer ? (this->_x + this->_width + 1) : this->_x - 1, (this->_y + this->_height / 2));
+      (void)isPlayer;
+      this->_bullets[i].setCoordinates(this->_x + this->_width + 1, (this->_y + this->_height / 2));
       this->_bullets[i].setDX(dX);
       this->_bullets[i].setActive(1);
       return ;

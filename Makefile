@@ -31,6 +31,7 @@ SRC			=	main.cpp \
 					Level/Level.accesors.cpp \
 					Enemy/Enemy.constructors.cpp \
 					Bullet/Bullet.constructors.cpp \
+					Bullet/Bullet.methods.cpp \
 					Bullet/Bullet.accesors.cpp \
 
 DIR_OBJ		= .obj

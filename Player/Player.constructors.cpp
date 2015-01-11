@@ -16,6 +16,7 @@ Player::Player (void) : Unit("player_1")
 {
   this->_lifes = 3;
   this->_vel = 20;
+  this->_health = 100;
 }
 
 Player::Player (Player const & ref) : Unit(ref)
