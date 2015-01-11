@@ -82,7 +82,7 @@ void Game::loop (void)
     "lv2/banana"
   };
 
-  Level level2("Level 2 - Mars Attack", 0.01, 1, 3, level2_sprites);
+  Level level2("Level 2 - Mars Attack", 0.01, 10, 3, level2_sprites);
   level2.start();
   level2.loop();
 
