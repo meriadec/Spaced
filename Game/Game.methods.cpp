@@ -69,7 +69,7 @@ void Game::loop (void)
     "lv1/enemy3"
   };
 
-  Level level1("Level 1 - Friendly fire", 0.008, 5, 3, level1_sprites);
+  Level level1("Level 1 - Friendly fire", 0.008, 1, 3, level1_sprites);
   level1.start();
   level1.loop();
 
@@ -82,8 +82,32 @@ void Game::loop (void)
     "lv2/enemy3"
   };
 
-  Level level2("Level 2 - Mars Attack", 0.01, 10, 3, level2_sprites);
+  Level level2("Level 2 - Mars Attack", 0.01, 1, 3, level2_sprites);
   level2.start();
   level2.loop();
+
+  this->destroy();
+
+  std::cout << "░░░░░░░░░░░████░░░░░░░░░░░░░░░░░░░░" << std::endl;
+  std::cout << "░░░░░░░░░███░██░░░░░░░░░░░░░░░░░░░░" << std::endl;
+  std::cout << "░░░░░░░░░██░░░█░░░░░░░░░░░░░░░░░░░░" << std::endl;
+  std::cout << "░░░░░░░░░██░░░██░░░░░░░░░░░░░░░░░░░" << std::endl;
+  std::cout << "░░░░░░░░░░██░░░███░░░░░░░░░░░░░░░░░" << std::endl;
+  std::cout << "░░░░░░░░░░░██░░░░██░░░░░░░░░░░░░░░░" << std::endl;
+  std::cout << "░░░░░░░░░░░██░░░░░███░░░░░░░░░░░░░░" << std::endl;
+  std::cout << "░░░░░░░░░░░░██░░░░░░██░░░░░░░░░░░░░" << std::endl;
+  std::cout << "░░░░░░░███████░░░░░░░██░░░░░░░░░░░░" << std::endl;
+  std::cout << "░░░░█████░░░░░░░░░░░░░░███░██░░░░░░" << std::endl;
+  std::cout << "░░░██░░░░░████░░░░░░░░░░██████░░░░░" << std::endl;
+  std::cout << "░░░██░░████░░███░░░░░░░░░░░░░██░░░░" << std::endl;
+  std::cout << "░░░██░░░░░░░░███░░░░░░░░░░░░░██░░░░" << std::endl;
+  std::cout << "░░░░██████████░███░░░░░░░░░░░██░░░░" << std::endl;
+  std::cout << "░░░░██░░░░░░░░████░░░░░░░░░░░██░░░░" << std::endl;
+  std::cout << "░░░░███████████░░██░░░░░░░░░░██░░░░" << std::endl;
+  std::cout << "░░░░░░██░░░░░░░████░░░░░██████░░░░░" << std::endl;
+  std::cout << "░░░░░░██████████░██░░░░███░██░░░░░░" << std::endl;
+  std::cout << "░░░░░░░░░██░░░░░████░███░░░░░░░░░░░" << std::endl;
+  std::cout << "░░░░░░░░░█████████████░░░░░░░░░░░░░" << std::endl;
+  std::cout << "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" << std::endl;
 
 }
