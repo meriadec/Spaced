@@ -43,7 +43,11 @@ void Level::acquire (void)
 
 void Level::update (double t, double dt)
 {
+
   (void) t;
+
+  // Moving player
+  // -------------
 
   if (PLYR.getXV() == 1) {
     PLYR.move(PLYR.getX() + dt * PLYR.getVelocity(), PLYR.getY());
@@ -55,15 +59,28 @@ void Level::update (double t, double dt)
     PLYR.move(PLYR.getX(), PLYR.getY() - dt * PLYR.getVelocity());
   }
 
+  PLYR.setXV(0);
+  PLYR.setYV(0);
+
+  // Moving enemies
+  // --------------
+
+  Unit * unit;
+
   // boucle dans ennemis
   // si xmin, xmax
   // si xmax, on fait un rand y
   // deplacement vers la gauche en fonction de vitesse
   for (unsigned int i = 0; i < this->getNb(); i++) {
-  }
 
-  PLYR.setXV(0);
-  PLYR.setYV(0);
+    unit = &((this->getUnits())[i]);
+
+    if (unit->getX() <= 0)                      { unit->setX(getGame()->getWidth()); }
+    if (unit->getX() == getGame()->getWidth())  { unit->setY(30); }
+
+    unit->setX(unit->getX() - dt * 1);
+
+  }
 }
 
 void Level::render (void)
@@ -74,6 +91,11 @@ void Level::render (void)
 
   // boucle dans ennemis
   // draw
+  Unit * units = this->getUnits();
+
+  for (unsigned int i = 0; i < this->getNb(); i++) {
+    this->draw(units[i]);
+  }
 
   this->drawStats();
   wrefresh(game->getWin());
