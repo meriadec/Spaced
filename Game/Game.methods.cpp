@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 12:11:09 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/11 11:09:44 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/11 11:59:33 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,13 @@ void Game::update (double t, double dt)
 {
   (void)t;
 
-  if (this->_player.getYV() == 1) {
+  if (this->_player.getXV() == 1) {
     this->_player.move(this->_player.getX() + dt * this->_player.getVelocity(), this->_player.getY());
-  } else if (this->_player.getXV() == 1) {
+  } else if (this->_player.getYV() == 1) {
     this->_player.move(this->_player.getX(), this->_player.getY() + dt * this->_player.getVelocity());
-  } else if (this->_player.getYV() == -1) {
-    this->_player.move(this->_player.getX() - dt * this->_player.getVelocity(), this->_player.getY());
   } else if (this->_player.getXV() == -1) {
+    this->_player.move(this->_player.getX() - dt * this->_player.getVelocity(), this->_player.getY());
+  } else if (this->_player.getYV() == -1) {
     this->_player.move(this->_player.getX(), this->_player.getY() - dt * this->_player.getVelocity());
   }
 
@@ -100,29 +100,29 @@ void Game::render (void)
 
 void Game::draw (Unit & unit)
 {
+  unsigned int  j     = 0;
   unsigned int  i     = 0;
-  unsigned int  j;
   unsigned int  x     = int(unit.getX());
   unsigned int  y     = int(unit.getY());
   char **       geo   = unit.getGeometry();
 
-  while (i < unit.getHeight()) {
-    j = 0;
-    while (j < unit.getWidth()) {
-      mvwaddch(this->_win, i + unit.getLastX(), j + unit.getLastY(), ' ');
-      ++j;
+  while (j < unit.getHeight()) {
+    i = 0;
+    while (i < unit.getWidth()) {
+      mvwaddch(this->_win, j + unit.getLastY(), i + unit.getLastX(), ' ');
+      ++i;
     }
-    ++i;
+    ++j;
   }
 
-  i = 0;
-  while (i < unit.getHeight()) {
-    j = 0;
-    while (j < unit.getWidth()) {
-      mvwaddch(this->_win, i + x, j + y, geo[i][j]);
-      ++j;
+  j = 0;
+  while (j < unit.getHeight()) {
+    i = 0;
+    while (i < unit.getWidth()) {
+      mvwaddch(this->_win, j + y, i + x, geo[j][i]);
+      ++i;
     }
-    ++i;
+    ++j;
   }
 
   unit.setLastX(x);
@@ -131,7 +131,11 @@ void Game::draw (Unit & unit)
 
 void Game::drawStats (void)
 {
-  mvwprintw(this->_win, this->_height - 1, 0, "[%d, %d] ",
+  mvwprintw(this->_win, this->_height - 1, 0, "GAME (w:%d h:%d) == [Y: %d, X: %d] (width: %d, height: %d)",
+      this->getWidth(),
+      this->getHeight(),
+      int(this->_player.getY()),
       int(this->_player.getX()),
-      int(this->_player.getY()));
+      this->_player.getWidth(),
+      this->_player.getHeight());
 }

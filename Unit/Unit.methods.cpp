@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 14:08:43 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/11 11:11:19 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/11 11:58:17 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void Unit::setGeometry (std::string const filename)
 {
-  int           i = 0;
+  int           y = 0;
   std::string   line;
   size_t        length;
   std::ifstream file (("sprites/" + filename).c_str());
@@ -29,14 +29,14 @@ void Unit::setGeometry (std::string const filename)
 
       length = line.length();
 
-      std::copy(line.begin(), line.end(), this->_geometry[i]);
-      this->_geometry[i][length] = '\0';
+      std::copy(line.begin(), line.end(), this->_geometry[y]);
+      this->_geometry[y][length] = '\0';
 
       this->_height++;
       if (length > this->_width) {
         this->_width = length;
       }
-      ++i;
+      ++y;
     }
     file.close();
   }
@@ -69,10 +69,10 @@ void Unit::move (float const x, float const y)
     this->_y = 0;
     return ;
   }
-  if (x + this->_height >= getGame()->getHeight()) {
+  if (y + this->_height >= getGame()->getHeight()) {
     return ;
   }
-  if (y + this->_width >= getGame()->getWidth()) {
+  if (x + this->_width >= getGame()->getWidth()) {
     return ;
   }
 

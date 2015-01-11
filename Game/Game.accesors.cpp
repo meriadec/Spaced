@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 12:08:16 by bgronon           #+#    #+#             */
-/*   Updated: 2015/01/11 10:43:41 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/01/11 12:00:20 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ WINDOW * Game::getWin (void) const
 
 int Game::getWidth (void) const
 {
-  return this->_height;
+  return this->_width;
 }
 
 int Game::getHeight (void) const
 {
-  return this->_width;
+  return this->_height;
 }
