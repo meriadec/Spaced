@@ -24,7 +24,7 @@ void Level::start (void)
 
   std::string s1 ("[ SPACED ]");
   std::string s2 ("Welcome to " + this->_title + "!");
-  std::string s3 ("Please press enter.");
+  std::string s3 ("Please press space.");
 
   while (1) {
 
@@ -107,6 +107,10 @@ void Level::update (double t, double dt)
     if (unit->getX() == getGame()->getWidth())  { unit->setY(std::rand() % getGame()->getHeight()); }
 
     unit->setX(unit->getX() - dt * this->_speed * unit->getVelocity());
+
+    if (PLYR.isCollisioned(*unit)) {
+      exit(0);
+    }
 
   }
 }

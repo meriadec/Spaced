@@ -42,12 +42,12 @@ void Unit::setGeometry (std::string const filename)
   }
 }
 
-bool Unit::areCollisioned (IObject const & one, IObject const & two) const
+bool Unit::isCollisioned (IObject const & other) const
 {
-  if (one.getX() < (two.getX() + two.getWidth()) &&
-      (one.getX() + one.getWidth()) > two.getX() &&
-      one.getY() < (two.getY() + two.getHeight()) &&
-      (one.getY() + one.getHeight()) > two.getY()) {
+  if (this->getX() < (other.getX() + other.getWidth()) &&
+      (this->getX() + this->getWidth()) > other.getX() &&
+      this->getY() < (other.getY() + other.getHeight()) &&
+      (this->getY() + this->getHeight()) > other.getY()) {
     return true;
   } else {
     // TODO handle specific geometry

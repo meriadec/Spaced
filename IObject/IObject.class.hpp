@@ -28,7 +28,7 @@ class IObject {
     virtual unsigned int     getHeight   (void) const = 0;
 
     virtual void    move (float const x, float const y) = 0;
-    virtual bool    areCollisioned (IObject const & one, IObject const & two) const = 0;
+    virtual bool    isCollisioned (IObject const & other) const = 0;
 
 };
 

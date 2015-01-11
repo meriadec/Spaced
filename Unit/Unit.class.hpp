@@ -53,7 +53,7 @@ class Unit : public IObject {
     void             setVelocity  (unsigned int v);
 
     void            setGeometry (std::string const filename);
-    bool            areCollisioned (IObject const & one, IObject const & two) const;
+    bool            isCollisioned (IObject const & other) const;
     void            move (float const x, float const y);
 
   protected:

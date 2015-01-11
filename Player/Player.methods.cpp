@@ -12,3 +12,9 @@
 
 #include "Player.class.hpp"
 
+void Player::die (void)
+{
+  if (this->_lifes > 0) {
+    this->_lifes--;
+  }
+}

@@ -25,6 +25,13 @@ class Player : public Unit {
 
     Player & operator= (Player const & ref);
 
+    int   getLifes (void) const;
+    void  die (void);
+
+  private:
+
+    int   _lifes;
+
 };
 
 #endif
