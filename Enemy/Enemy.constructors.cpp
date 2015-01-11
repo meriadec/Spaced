@@ -14,10 +14,12 @@
 
 Enemy::Enemy (void) : Unit()
 {
+  this->_health = 20;
 }
 
 Enemy::Enemy (Enemy const & ref) : Unit(ref)
 {
+  this->_health = 20;
   *this = ref;
 }
 

@@ -53,6 +53,7 @@ class Unit : public IObject {
     void             setLastX     (int x);
     void             setLastY     (int y);
     void             setVelocity  (unsigned int v);
+    void             takeDamage   (int dmg);
 
     void            setGeometry (std::string const filename);
     bool            isCollisioned (IObject const & other) const;

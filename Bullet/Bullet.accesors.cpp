@@ -12,18 +12,6 @@
 
 #include "Bullet.class.hpp"
 
-void Bullet::move (float const x, float const y)
-{
-  (void) x;
-  (void) y;
-}
-
-bool Bullet::isCollisioned (IObject const & other) const
-{
-  (void) other;
-  return false;
-}
-
 char ** Bullet::getGeometry (void) const
 {
   return 0;
