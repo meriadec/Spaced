@@ -18,7 +18,6 @@
 # include <ncurses.h>
 # include "Unit.class.hpp"
 # include "Player.class.hpp"
-# include "List.class.hpp"
 
 class Game {
 
@@ -44,7 +43,6 @@ class Game {
     Game (Game const & ref);
 
     WINDOW *  _win;
-    List *    _enemies;
     Player    _player;
     int       _height;
     int       _width;
