@@ -103,7 +103,7 @@ void Level::update (double t, double dt)
 
     unit = &((this->getUnits())[i]);
 
-    if (unit->getX() <= 0)                      { unit->setX(getGame()->getWidth()); }
+    if (unit->getX() + unit->getWidth() <= 0)   { unit->setX(getGame()->getWidth()); }
     if (unit->getX() == getGame()->getWidth())  { unit->setY(std::rand() % getGame()->getHeight()); }
 
     unit->setX(unit->getX() - dt * this->_speed * unit->getVelocity());
