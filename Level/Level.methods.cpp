@@ -17,6 +17,33 @@
 #include "Level.class.hpp"
 #include "Game.class.hpp"
 
+void Level::start (void)
+{
+  int ch;
+  Game * game = getGame();
+
+  std::string s1 ("[ SPACED ]");
+  std::string s2 ("Welcome to " + this->_title + "!");
+  std::string s3 ("Please press enter.");
+
+  while (1) {
+
+    mvwprintw(game->getWin(), game->getHeight() / 2 - 5, game->getWidth() / 2 - s1.length() / 2, s1.c_str());
+    wattrset(game->getWin(), COLOR_PAIR(3));
+    mvwprintw(game->getWin(), game->getHeight() / 2, game->getWidth() / 2 - s2.length() / 2, s2.c_str());
+    wattroff(game->getWin(), COLOR_PAIR(3));
+    mvwprintw(game->getWin(), game->getHeight() / 2 + 2, game->getWidth() / 2 - s3.length() / 2, s3.c_str());
+
+    wrefresh(game->getWin());
+    if ((ch = getch()) != ERR) {
+      if (ch == ' ') {
+        werase(game->getWin());
+        break ;
+      }
+    }
+  }
+}
+
 void Level::loop (void)
 {
   double    t   = 0.0;
@@ -125,7 +152,7 @@ void Level::draw (Unit & unit)
   while (j < unit.getHeight()) {
     i = 0;
     while (i < unit.getWidth()) {
-      mvwaddch(game->getWin(), j + y, i + x, geo[j][i]);
+      mvwaddch(game->getWin(), j + y, i + x, geo[j][i] | COLOR_PAIR(1));
       ++i;
     }
     ++j;

@@ -19,6 +19,12 @@
 void Game::init (void)
 {
   if (!initscr()) {
+    std::cout << "Could not init screen." << std::endl;
+    exit(1);
+  }
+  if (!has_colors()) {
+    endwin();
+    std::cout << "Your term does not support colors." << std::endl;
     exit(1);
   }
 
@@ -29,6 +35,11 @@ void Game::init (void)
   this->_width = w;
 
   this->_win = newwin(h, w, 0, 0);
+
+  start_color();
+  init_pair(1, COLOR_RED, COLOR_BLACK);
+  init_pair(2, COLOR_GREEN, COLOR_GREEN);
+  init_pair(3, COLOR_BLACK, COLOR_RED);
 
   noecho();
   nodelay(stdscr, 1);
@@ -48,5 +59,7 @@ void Game::loop (void)
 {
   std::string level1_sprites[] = { "enemy1", "enemy2", "enemy3" };
   Level level1("Level 1 - Friendly fire", 0.005, 10, 3, level1_sprites);
+
+  level1.start();
   level1.loop();
 }

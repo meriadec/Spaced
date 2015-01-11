@@ -25,6 +25,7 @@ class Level {
 
     Level & operator= (Level const & ref);
 
+    void  start     (void);
     void  loop      (void);
     void  acquire   (void);
     void  update    (double t, double dt);

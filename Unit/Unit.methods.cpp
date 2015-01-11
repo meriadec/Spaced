@@ -44,19 +44,15 @@ void Unit::setGeometry (std::string const filename)
 
 bool Unit::areCollisioned (IObject const & one, IObject const & two) const
 {
-  unsigned int i = 0;
-  unsigned int j;
-  char ** geoOne = one.getGeometry();
-  char ** geoTwo = two.getGeometry();
-
-  // TODO handle specific geometry
-  (void)geoOne;
-  (void)geoTwo;
-  (void)i;
-  (void)j;
-
-
-  return false;
+  if (one.getX() < (two.getX() + two.getWidth()) &&
+      (one.getX() + one.getWidth()) > two.getX() &&
+      one.getY() < (two.getY() + two.getHeight()) &&
+      (one.getY() + one.getHeight()) > two.getY()) {
+    return true;
+  } else {
+    // TODO handle specific geometry
+    return false;
+  }
 }
 
 void Unit::move (float const x, float const y)
