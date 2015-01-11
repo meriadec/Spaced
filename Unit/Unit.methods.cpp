@@ -43,17 +43,30 @@ void Unit::setGeometry (std::string const filename)
   }
 }
 
+int max (int a, int b) {
+  return a > b ? a : b;
+}
+
+int min (int a, int b) {
+  return a < b ? a : b;
+}
+
 bool Unit::isCollisioned (IObject const & other) const
 {
-  if (this->getX() < (other.getX() + other.getWidth()) &&
-      (this->getX() + this->getWidth()) > other.getX() &&
-      this->getY() < (other.getY() + other.getHeight()) &&
-      (this->getY() + this->getHeight()) > other.getY()) {
-    return true;
-  } else {
-    // TODO handle specific geometry
-    return false;
-  }
+  int x11 = this->getX();
+  int y11 = this->getY();
+  int x12 = x11 + this->getWidth();
+  int y12 = y11 + this->getHeight();
+  int x21 = other.getX();
+  int y21 = other.getY();
+  int x22 = x21 + other.getWidth();
+  int y22 = y21 + other.getHeight();
+  int x_overlap = max(0, min(x12, x22) - max(x11, x21));
+  int y_overlap = max(0, min(y12, y22) - max(y11, y21));
+
+  if (!x_overlap || !y_overlap) { return false; }
+
+  return true;
 }
 
 void Unit::move (float const x, float const y)
