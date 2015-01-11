@@ -19,7 +19,7 @@ class Level {
 
   public:
 
-    Level (std::string title, unsigned int nb, unsigned int nbSprites, std::string sprites[]);
+    Level (std::string title, float speed, unsigned int nb, unsigned int nbSprites, std::string sprites[]);
     Level (Level const & ref);
     ~Level (void);
 
@@ -43,6 +43,7 @@ class Level {
     std::string     _title;
     unsigned int    _nb;
     Unit *          _units;
+    float           _speed;
 
 };
 

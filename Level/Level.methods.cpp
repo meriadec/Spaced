@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cstdlib>
 #include <stdlib.h>
 #include "Spaced.hpp"
 #include "Level.class.hpp"
@@ -76,9 +77,9 @@ void Level::update (double t, double dt)
     unit = &((this->getUnits())[i]);
 
     if (unit->getX() <= 0)                      { unit->setX(getGame()->getWidth()); }
-    if (unit->getX() == getGame()->getWidth())  { unit->setY(30); }
+    if (unit->getX() == getGame()->getWidth())  { unit->setY(std::rand() % getGame()->getHeight()); }
 
-    unit->setX(unit->getX() - dt * 1);
+    unit->setX(unit->getX() - dt * this->_speed * unit->getVelocity());
 
   }
 }

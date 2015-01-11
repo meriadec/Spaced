@@ -19,12 +19,12 @@ Level::Level (void)
 {
 }
 
-Level::Level (std::string title, unsigned int nb, unsigned int nbSprites, std::string sprites[]) : _title(title), _nb(nb)
+Level::Level (std::string title, float speed, unsigned int nb, unsigned int nbSprites, std::string sprites[]) : _title(title), _nb(nb), _speed(speed)
 {
   this->_units = new Unit[nb];
   for (unsigned int i = 0; i < nb; i++) {
     this->_units[i].setGeometry(sprites[std::rand() % nbSprites]);
-    this->_units[i].setVelocity(10 + (std::rand() % 30));
+    this->_units[i].setVelocity(5 + (std::rand() % 10));
     this->_units[i].setX(getGame()->getWidth());
   }
 }

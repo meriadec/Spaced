@@ -72,12 +72,12 @@ void Unit::setVelocity (unsigned int v)
   this->_vel = v;
 }
 
-void Unit::setX (int x)
+void Unit::setX (float x)
 {
   this->_x = x;
 }
 
-void Unit::setY (int y)
+void Unit::setY (float y)
 {
   this->_y = y;
 }

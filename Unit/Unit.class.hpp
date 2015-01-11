@@ -44,8 +44,8 @@ class Unit : public IObject {
     char **          getGeometry (void) const;
     unsigned int     getVelocity (void) const;
 
-    void             setX         (int x);
-    void             setY         (int y);
+    void             setX         (float x);
+    void             setY         (float y);
     void             setXV        (int xv);
     void             setYV        (int yv);
     void             setLastX     (int x);
