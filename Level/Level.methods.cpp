@@ -24,7 +24,7 @@ void Level::start (void)
   Game * game = getGame();
 
   std::string s1 ("[ SPACED ]");
-  std::string s2 ("Welcome to " + this->_title + "!");
+  std::string s2 (" Welcome to " + this->_title + "! ");
   std::string s3 ("Please press space.");
   std::ostringstream ss;
   ss << PLYR.getLifes();
@@ -39,9 +39,9 @@ void Level::start (void)
   while (1) {
 
     mvwprintw(game->getWin(), game->getHeight() / 2 - 5, game->getWidth() / 2 - s1.length() / 2, s1.c_str());
-    wattrset(game->getWin(), COLOR_PAIR(3));
+    wattrset(game->getWin(), COLOR_PAIR(4));
     mvwprintw(game->getWin(), game->getHeight() / 2, game->getWidth() / 2 - s2.length() / 2, s2.c_str());
-    wattroff(game->getWin(), COLOR_PAIR(3));
+    wattroff(game->getWin(), COLOR_PAIR(4));
     mvwprintw(game->getWin(), game->getHeight() / 2 + 2, game->getWidth() / 2 - s3.length() / 2, s3.c_str());
     mvwprintw(game->getWin(), game->getHeight() / 2 + 3, game->getWidth() / 2 - s4.length() / 2, s4.c_str());
 
@@ -64,9 +64,9 @@ void Level::over (void)
   std::string s3 ("Please press space to quit.");
 
   mvwprintw(game->getWin(), game->getHeight() / 2 - 5, game->getWidth() / 2 - s1.length() / 2, s1.c_str());
-  wattrset(game->getWin(), COLOR_PAIR(3));
+  wattrset(game->getWin(), COLOR_PAIR(4));
   mvwprintw(game->getWin(), game->getHeight() / 2, game->getWidth() / 2 - s2.length() / 2, s2.c_str());
-  wattroff(game->getWin(), COLOR_PAIR(3));
+  wattroff(game->getWin(), COLOR_PAIR(4));
   mvwprintw(game->getWin(), game->getHeight() / 2 + 2, game->getWidth() / 2 - s3.length() / 2, s3.c_str());
 
   wrefresh(game->getWin());
@@ -165,21 +165,19 @@ void Level::render (void)
 {
   Game * game = getGame();
 
-  this->draw(game->getPlayer());
+  this->draw(game->getPlayer(), 3);
 
-  // boucle dans ennemis
-  // draw
   Unit * units = this->getUnits();
 
   for (unsigned int i = 0; i < this->getNb(); i++) {
-    this->draw(units[i]);
+    this->draw(units[i], 0);
   }
 
   this->drawStats();
   wrefresh(game->getWin());
 }
 
-void Level::draw (Unit & unit)
+void Level::draw (Unit & unit, int color)
 {
   Game * game = getGame();
 
@@ -202,7 +200,7 @@ void Level::draw (Unit & unit)
   while (j < unit.getHeight()) {
     i = 0;
     while (i < unit.getWidth()) {
-      mvwaddch(game->getWin(), j + y, i + x, geo[j][i] | COLOR_PAIR(1));
+      mvwaddch(game->getWin(), j + y, i + x, geo[j][i] | COLOR_PAIR(color));
       ++i;
     }
     ++j;

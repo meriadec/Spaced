@@ -30,7 +30,7 @@ class Level {
     void  acquire   (void);
     int   update    (double t, double dt);
     void  render    (void);
-    void  draw      (Unit & unit);
+    void  draw      (Unit & unit, int color);
     void  drawStats (void);
     void  over      (void);
 

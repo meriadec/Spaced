@@ -39,7 +39,8 @@ void Game::init (void)
   start_color();
   init_pair(1, COLOR_RED, COLOR_BLACK);
   init_pair(2, COLOR_GREEN, COLOR_GREEN);
-  init_pair(3, COLOR_BLACK, COLOR_RED);
+  init_pair(3, COLOR_BLUE, COLOR_BLACK);
+  init_pair(4, COLOR_WHITE, COLOR_BLUE);
 
   noecho();
   nodelay(stdscr, 1);
